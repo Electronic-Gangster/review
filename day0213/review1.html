@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>복습 1번</title>
+</head>
+<body>
+    <h2>형제 노드를 찾는 방법</h2>
+    <p>sibling 함수를 이용하여, <br>
+    고양이 사진에 마우스를 오버하면 글씨와 사진의 스타일을 변경해보자</p>
+    <p>1. 형태 제작하기</p>
+    <p>2. 구성 읽기</p>
+    <p>3. 맨위에 one div가 있고,<br>
+    고양이 사진과 h4가 포함된 div는 형제입니다.<br>
+    h4텍스트와 빙수 사진은 형제입니다.</p>
+    <br><br>
+
+    <div class="one">
+        <img src="../image/animal/C1.png" width="100">
+        <div class="two">
+            <h4>형제 함수를 찾으러 왔습니다.</h4>
+            <div class="three">
+                <img src="../image/food/11.jpg" width="100">
+            </div>
+        </div>
+    </div>
+    <script>
+        //1. 고양이 사진의 값을 찾아주는 선언을 합니다.
+        var catImg=document.querySelector(".one>img");
+        //*고양이 이미지는 one 클래스 아래 있는 이미지 입니다라는 뜻
+
+        //2. 고양이 사진에 마우스를 오버 했을 때 발생하는 이벤트를 적습니다.
+        //* 고양이 이미지 + 마우스를 오버하면 = 발생하는 이벤트는~ 
+        catImg.onmouseover=function(){
+            this.nextElementSibling.querySelector("h4").style.fontSize="30px";
+            //this=고양이에 마우스를 올렸을 때 + 형제노드를 찾습니다 + 
+            //병렬 구조인 div (two)안에 있는 h4를 선택합니다 +
+            //스타일 변경 + 폰트사이즈 =30입니다 라는 뜻
+            
+            this.nextElementSibling.querySelector("h4").style.backgroundColor="lightgray";
+            //this=고양이에 마우스를 올렸을 때 + 형제노드를 찾습니다+
+            //병렬구조인 div(two 안에 있는 h4를 선택합니다+
+            //스타일 변경 + 배경색상을 변경합니다 = 밝은 회색
+
+            this.nextElementSibling.querySelector("h4").style.color="skyblue"
+
+            this.nextElementSibling.querySelector(".three>img").style.border="5px solid orange"
+            //this=고양이에 마우스를 올렸을 때 + 형제 노드를 찾습니다+ 특정요소를 선택합니다.(querySelector)의 .three 안에 있는 이미지+ 스타일 변경합니다 = 5픽셀 기본 오렌지 컬러
+         }
+
+         //마우스가 벗어 났을 때 기본으로 돌아가는 설정
+         catImg.onmouseout=function(){
+            this.nextElementSibling.querySelector("h4").style.fontSize="";
+            this.nextElementSibling.querySelector("h4").style.backgroundColor="";
+            this.nextElementSibling.querySelector("h4").style.color="";
+
+            this.nextElementSibling.querySelector(".three>img").style.border="";
+         }
+    </script>
+</body>
+</html>

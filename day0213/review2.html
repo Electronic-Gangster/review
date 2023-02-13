@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>복습 2번</title>
+</head>
+<body>
+    <h2 style="text-align: center;">sibling 함수를 이용하여 형제 노드 찾는 방법</h2>
+    <p>사진을 기준으로<br>
+    이전 형제노드, 다음 형제노드, 다음 다음 형제 노드를 찾아<br>
+    화면에 출력하는 예제 입니다.</p>
+    <br><br>
+    <p>1. 먼저 기본적인 형태를 잡아줍니다</p>
+    <p>2. 출력되는 영역을 작성합니다.</p>
+    <p>3. 모든 형태가 형제가 되도록 병렬로 구성합니다.</p>
+    <p>4. 자바스크립트를 이용하여, 화면에 출력하도록 설계합니다.</p>
+    <br><br>
+    <h3>오늘 수업에 대한 복습입니다.</h3>
+    <img src="../image/div_img/beauty2.jpg" width="300">
+    <h4>자바스크립트는 어렵습니다.</h4>
+    <h5>하지만 재미있습니다.</h5>
+        <hr>
+    <!--이곳은 결과물이 출력하는 영역입니다.-->
+    <h2 class="one">사진 이전 텍스트</h2>
+    <h2 class="two">사진 다음 텍스트</h2>
+    <h2 class="three">사진 다음 다음 텍스트</h2>
+    <!--이곳은 자바스크립트로 기능을 설계하는 영역입니다.-->
+    <script>
+        //1.이미지에 마우스를 올렸을 때 출력되는 기능을 설계합니다.
+        document.querySelector("img").onmouseover=function(){
+            //자료를 구합니다 + 특정영역을 선택합니다(이미지)+마우스를 올립니다=이때 작동하는 기능을 설계합니다.
+        
+            var next1=this.previousElementSibling.innerText;
+                //임의 명령어 next1을 선언합니다.
+                //마우스가 올라가는 행동(this)+ (이미지)이전 노드를 찾습니다+(이전 노드가 텍스트이므로) 텍스트를 출력합니다.
+            document.querySelector(".one").innerText=next1;
+                //자료를 구합니다 + 특정 영역을 선택합니다(결과물이 출력하는 영역의 h2의 클래스 one) + 텍스트로 출력합니다=(어디에?)임의로 설정한 명령어 next1에 해당 내용을 출력하길 원합니다.
+
+            var next2=this.nextElementSibling.innerText;
+                document.querySelector(".two").innerText=next2;
+                //1. 임의 명령어를 우선 선언해주세요
+                //2. 임의 명령어가 원하는 값은 이미지(기준)+ 그 다음 텍스트+텍스트로 출력하길 원합니다.
+                //3.자료를 찾습니다 + 특정영역을 선택합니다(.two)+그곳에 찾아낸 값을 출력하길 원합니다.
+                
+            var next3=this.nextElementSibling.nextElementSibling.innerText;
+                document.querySelector(".three").innerText=next3;
+                //1. 임의 명령어를 우선 선언해주세요
+                //2. 임의 명령어가 원하는 값은 이미지(기준)+ 다음 + 다음 형제노드 + 텍스트로 출력하길 원합니다.
+                //3. 자료를 찾습니다 + 특정영역을 찾습니다 (three) + 찾은 영역에 찾은 자료를 출력하길 원합니다.
+        }
+
+        //2. 이미지에서 마우스가 벗어 났을 때 출력되는 기능을 설계합니다.
+        document.querySelector("img").onmouseout=function(){
+            //자료를 구합니다 + 특정영역을 선택합니다 + 마우스가 벗어났을 때 출력되는 기능을 이제 부터 이곳에 적겠습니다. 라는 뜻입니다.
+            
+            document.querySelector(".one").innerText="사진 이전 텍스트";
+            //1. 원래대로 돌아가면 되므로 해당 영역에 기존에 있던 글씨만 (아날로그방식)으로 다시 적어주면 됩니다.
+            document.querySelector(".two").innerText="사진 다음 텍스트";
+            document.querySelector(".three").innerText="사진 다음 다음 텍스트";
+        }
+    </script>
+</body>
+</html>
