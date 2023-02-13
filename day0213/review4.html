@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>작은 사진에 대한 마우스 이벤트 심화</title>
+</head>
+<body>
+    <h3>querySelector 함수를 이용하여 마우스 이벤트를 만듭니다.</h3>
+    <p>1. 형태를 우선 제작 합니다.</p>
+    <p>2. querySelector이용하여, 다양한 사진 값을 불러옵니다</p>
+    <table border="1" style="border-collapse: collapse; width: 500px;">
+        <caption>작은 사진에 대한 마우스 이벤트</caption>
+        <tr>
+            <!--1. 표안에 작은 이미지와 이름을 입력합니다.
+            클래스를 설정하여 해당 값을 불러올 준비를 합니다.-->
+            <th width="100" class="star">
+                <img src="../image/moviestar/12.jpg" width="80">
+                <br>
+                <b>박보영</b>
+            </th>
+        
+        <!--2. 큰 사진 영역을 만들어 둡니다.-->
+        <td align="center" rowspan="5">
+            <img src="../image/moviestar/12.jpg" width="300" class="bigphoto">
+            <br>
+            <h2>박보영</h2>
+        </td>
+        </tr>
+
+        <!--3. 2번째 줄부터 5번째 줄까지 만듭니다.-->
+        <tr>
+            <th width="100" class="star">
+                <img src="../image/moviestar/13.jpg" width="80">
+                <br>
+                <b>박신혜</b>
+            </th>
+        </tr>
+        <tr>
+            <th width="100" class="star">
+                <img src="../image/moviestar/17.jpg" width="80">
+                <br>
+                <b>신민아</b>
+            </th>
+        </tr>
+        <tr>
+            <th width="100" class="star">
+                <img src="../image/moviestar/18.jpg" width="80">
+                <br>
+                <b>신세경</b>
+            </th>
+        </tr>
+        <tr>
+            <th width="100" class="star">
+                <img src="../image/moviestar/15.jpg" width="80">
+                <br>
+                <b>설현</b>
+            </th>
+        </tr>
+    </table>
+    <script>
+        //1. 작은 사진들의 요소를 배열 형태로 만듭니다.
+        //th 태그 안에 있는 클래스 star를 모두 불러와 배열로 만듭니다.
+        var tharr=document.querySelectorAll("th.star");
+            //임의 명령어 tharr을 선언합니다.
+            //자료를 찾습니다+특정영역 전부 (th태그 안 class star)
+
+        //for 반복문을 사용합니다
+        //조건은 위에서 선언한 명령어 내용중 작은 사진들입니다.    
+        for(var thElement of tharr){
+            //조건(작은사진들)에 마우스를 올렸을 때 작동하는 내용을 적습니다
+            thElement.onmouseover=function(){
+                
+                //1. 작은 사진에 대한 src 값을 찾아내는 함수
+                var smallSrc=this.querySelector("img").src;
+                    //임의 명령어 smallSrc를 설정합니다
+                    //마우스를 올렸을 때 얻는 값 + 특정영역의 값(이미지 값) + 이미지 값 중 src 값을 임의 명령어가 가지도록 설정합니다.
+                
+                //2. 큰사진의 src 값위에 불러온 값을 넣어 변경합니다.
+                document.querySelector(".bigphoto").setAttribute("src",smallSrc)
+                    //자료를 찾습니다 + 특정영역의 값(큰사진) + 얻어온 값을 변경합니다 (src값을 위에서 불러온 작은 사진 값으로 변경합니다)
+
+                //3. 이벤트가 발생한 th태그 밑에 있는 b 태그를 찾습니다.
+                var starName=this.querySelector("b").innerText;
+                    //임의 명령어 starName을 선언합니다.
+                    //마우스를 올렸을 떄 얻는 값 + 특정영역에서 그 값을 찾습니다.(b 태그의 내용) + 이것을 텍스트로 출력해주세요.
+
+                //4. 위에서 선언한 스타 이름을 h2태그에 씌우는 작업을 합니다.
+                document.querySelector("h2").innerText=starName;
+                    //자료를 찾습니다 + 특정영역(h2의 값)+텍스트로 표시해주세요=(어떤걸로?)위에서 얻어온 b의 값을 가진 스타네임으로 표시해주세요
+            }
+        }
+    </script>
+
+</body>
+</html>
